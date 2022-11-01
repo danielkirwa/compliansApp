@@ -20,13 +20,21 @@
      	</div>
       </div>
 </div>
-<hr style="size: 2px;">
+<hr>
 <!-- end of header -->
 <!-- start of body -->
 <div class="form-holder">
     <div class="center-card">
-         
+          <center><img src="assets/logo.png" width="150px">
+          <br>
+          <input type="" name="" class="myinput" placeholder="Username/email"><br>
+          <input type="password" name="" class="myinput" placeholder="password"><br><br>
+          <input type="checkbox" name=""> Show password<br><br>
+          <input type="submit" name="" class="loginbutton" value="Log in now"><br></center><br><br>
+          <button class="createaccountbutton">Create new account</button><br><br>
+
     </div>
+
     <div class="center-card">registration</div>
 </div>
 <!-- end of body -->
