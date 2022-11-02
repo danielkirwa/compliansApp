@@ -39,7 +39,7 @@
 }
 .myinput{
 	width: 50%;
-	padding: 4px 6px;
+	padding: 6px 8px;
 	margin-top: 16px;
 	outline: none;
 	border-radius: 10px;
@@ -78,4 +78,15 @@
 	float: right;
 	cursor: pointer;
 
+}
+.footer{
+	background: dodgerblue;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	bottom: 0;
+	align-items: center;
+	align-content: center;
+}
+#registrationform{
+ display: none;
 }

@@ -1,3 +1,9 @@
+<?php 
+   
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,20 +30,39 @@
 <!-- end of header -->
 <!-- start of body -->
 <div class="form-holder">
-    <div class="center-card">
+    <div class="center-card" id="loginform">
           <center><img src="assets/logo.png" width="150px">
           <br>
           <input type="" name="" class="myinput" placeholder="Username/email"><br>
           <input type="password" name="" class="myinput" placeholder="password"><br><br>
           <input type="checkbox" name=""> Show password<br><br>
           <input type="submit" name="" class="loginbutton" value="Log in now"><br></center><br><br>
-          <button class="createaccountbutton">Create new account</button><br><br>
+          <button class="createaccountbutton" id="callregistration">Create new account</button><br><br>
 
     </div>
 
-    <div class="center-card">registration</div>
+    <div class="center-card" id="registrationform">
+        <center><img src="assets/logo.png" width="150px">
+          <br>
+          <input type="" name="" class="myinput" placeholder="First name"><br>
+          <input type="" name="" class="myinput" placeholder="Other name"><br>
+          <input type="" name="" class="myinput" placeholder="Email"><br>
+          <input type="password" name="" class="myinput" placeholder="Enter password"><br>
+          <input type="password" name="" class="myinput" placeholder="Confirm password"><br><br>
+          <input type="checkbox" name=""> Show password<br><br>
+          <input type="submit" name="" class="loginbutton" value="Create account"><br></center><br><br>
+          <button class="createaccountbutton">Log in instead</button><br><br>
+    </div>
 </div>
 <!-- end of body -->
-<div>footer</div>
+<div class="footer">
+    <center>
+    KLB complains &copy; 2022
+    </center>
+</div>
+
+
+<script type="text/javascript" src="javascript/index.js">
+</script>
 </body>
 </html>
