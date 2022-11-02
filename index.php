@@ -51,7 +51,7 @@
           <input type="password" name="" class="myinput" placeholder="Confirm password"><br><br>
           <input type="checkbox" name=""> Show password<br><br>
           <input type="submit" name="" class="loginbutton" value="Create account"><br></center><br><br>
-          <button class="createaccountbutton">Log in instead</button><br><br>
+          <button class="createaccountbutton" id="calllogin">Log in instead</button><br><br>
     </div>
 </div>
 <!-- end of body -->
