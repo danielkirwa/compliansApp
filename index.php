@@ -1,7 +1,52 @@
 <?php 
-   
-
+  require_once('connection.php');
  ?>
+ <?php 
+
+        if(isset($_POST['createaccount'])){
+           $PASSWORD = $_POST['password'];
+             $CONFIRMPASSWORD = $_POST['confirmpassword'];
+            $PRIVILLAGE = "User";
+            if ($PASSWORD == $CONFIRMPASSWORD) {
+                // code...
+                 //echo("clicked");
+            //code to insert data to the database/ register user
+            $FNAME = $_POST['firstname'];
+            $LNAME = $_POST['lastname'];
+            $EMAIL = $_POST['email'];
+            
+             
+    $sql = "INSERT INTO tbluserdetails (FIRSTNAME, LASTNAME, EMAIL, STATUS)
+    VALUES ('{$FNAME}', '{$LNAME}', '$EMAIL',1)";
+
+    if ($conn->query($sql) === TRUE) {
+      echo "Account created successfully";
+
+       $sqllogin = "INSERT INTO tblusers (USERNAME, PASSWORD, PRIVILLAGE)
+    VALUES ('{$EMAIL}', '{$PASSWORD}', '$PRIVILLAGE')";
+
+    if ($conn->query($sqllogin) === TRUE) {
+      echo "Account created successfully";
+    } else {
+      echo "Error: " . $sqllogin . "<br>" . $conn->error;
+    }
+
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+            }else{
+                echo "Password do not match";
+            }
+
+           
+
+        }
+ 
+
+  ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -38,19 +83,22 @@
           <input type="checkbox" name=""> Show password<br><br>
           <input type="submit" name="" class="loginbutton" value="Log in now"><br></center><br><br>
           <button class="createaccountbutton" id="callregistration">Create new account</button><br><br>
+          <button class="forgotpasswordbutton" id="callregistration">Forgot password</button><br><br>
 
     </div>
 
     <div class="center-card" id="registrationform">
+        <form action="index.php" method="POST" name="formcreateaccount" id="form1">
         <center><img src="assets/logo.png" width="150px">
           <br>
-          <input type="" name="" class="myinput" placeholder="First name"><br>
-          <input type="" name="" class="myinput" placeholder="Other name"><br>
-          <input type="" name="" class="myinput" placeholder="Email"><br>
-          <input type="password" name="" class="myinput" placeholder="Enter password"><br>
-          <input type="password" name="" class="myinput" placeholder="Confirm password"><br><br>
+          <input type="" name="firstname" class="myinput" placeholder="First name"><br>
+          <input type="" name="lastname" class="myinput" placeholder="Other name"><br>
+          <input type="" name="email" class="myinput" placeholder="Email"><br>
+          <input type="password" name="password" class="myinput" placeholder="Enter password"><br>
+          <input type="password" name="confirmpassword" class="myinput" placeholder="Confirm password"><br><br>
           <input type="checkbox" name=""> Show password<br><br>
-          <input type="submit" name="" class="loginbutton" value="Create account"><br></center><br><br>
+          <input type="submit" name="createaccount" class="loginbutton" value="Create account"><br></center><br><br>
+      </form>
           <button class="createaccountbutton" id="calllogin">Log in instead</button><br><br>
     </div>
 </div>

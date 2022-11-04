@@ -13,3 +13,22 @@ calllogin.addEventListener('click', () =>{
 	refistrationform.style.display = "none";
 	localStorage.setItem("activeform", "login");
 })
+
+// retain page state
+function retainstate() {
+	// body...
+     let newstate = localStorage.getItem("activeform");
+     console.log(newstate);
+     if (newstate == "login") {
+     	loginform.style.display = "block";
+	     refistrationform.style.display = "none";
+      }else if(newstate == "registration"){
+      loginform.style.display = "none";
+	     refistrationform.style.display = "block";
+      }else{
+	     loginform.style.display = "block";
+	     refistrationform.style.display = "none";
+      }
+
+}
+retainstate();
