@@ -4,8 +4,9 @@
  <?php 
 
         if(isset($_POST['createaccount'])){
-           $PASSWORD = $_POST['password'];
-             $CONFIRMPASSWORD = $_POST['confirmpassword'];
+            if($_POST['firstname'] != "" && $_POST['email'] != "" && $_POST['password'] != ""){
+           $PASSWORD = md5($_POST['password']);
+             $CONFIRMPASSWORD = md5($_POST['confirmpassword']);
             $PRIVILLAGE = "User";
             if ($PASSWORD == $CONFIRMPASSWORD) {
                 // code...
@@ -34,20 +35,68 @@
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
             }else{
                 echo "Password do not match";
             }
-
+                }else{
+           echo "<script>alert('Fill in all details');</script>";
+        }
+ 
            
 
         }
- 
+
+        
 
   ?>
+  <?php 
+     // login button 
+         session_start();
+        if(isset($_POST['logintoaccount'])){
+             
+            if($_POST['username'] != "" && $_POST['userpassword'] != ""){
+            $newUserName = $_POST['username'];
+            $NewPassword = md5($_POST['userpassword']);
 
 
+            $query = "SELECT USERNAME,PRIVILLAGE FROM tblusers WHERE USERNAME='$newUserName' AND PASSWORD='$NewPassword'"; 
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+              // output data of each row
+              if($row = $result->fetch_assoc()) {
+
+                $_SESSION['username'] = $row["USERNAME"];
+               $_SESSION['privillage'] = $row['PRIVILLAGE'];
+                
+   
+                if($_SESSION['privillage'] == "User"){
+                header("Refresh:1; url=dashboard.php");
+
+               }
+
+               if($_SESSION['privillage'] == "Admin"){
+                //header("Location:dashboardadmin.php");
+
+               }
+               if($_SESSION['privillage'] == "none"){
+                echo '<script>alert ("Your account was Disable")</script>';
+
+               }
+              }
+            } else {
+              echo "<script>alert('Incorrect login details');</script>";
+            }
 
 
+                }else{
+           echo "<script>alert('Fill in all you login details');</script>";
+        }
+ 
+           
+
+        }
+   ?>
 
 <!DOCTYPE html>
 <html>
@@ -71,17 +120,20 @@
      	</div>
       </div>
 </div>
+
 <hr>
 <!-- end of header -->
 <!-- start of body -->
 <div class="form-holder">
     <div class="center-card" id="loginform">
+        <form action="index.php" method="POST" name="formlogin" id="form2">
           <center><img src="assets/logo.png" width="150px">
           <br>
-          <input type="" name="" class="myinput" placeholder="Username/email"><br>
-          <input type="password" name="" class="myinput" placeholder="password"><br><br>
-          <input type="checkbox" name=""> Show password<br><br>
-          <input type="submit" name="" class="loginbutton" value="Log in now"><br></center><br><br>
+          <input type="" name="username" class="myinput" placeholder="Username/email"><br>
+          <input type="password" name="userpassword" class="myinput" placeholder="password" id="password1"><br><br>
+          <input type="checkbox" name="" id="btnshowpassword1" onclick="showpassword();"> Show password<br><br>
+          <input type="submit" name="logintoaccount" class="loginbutton" value="Log in now"><br></center><br><br>
+      </form>
           <button class="createaccountbutton" id="callregistration">Create new account</button><br><br>
           <button class="forgotpasswordbutton" id="callregistration">Forgot password</button><br><br>
 
@@ -94,9 +146,9 @@
           <input type="" name="firstname" class="myinput" placeholder="First name"><br>
           <input type="" name="lastname" class="myinput" placeholder="Other name"><br>
           <input type="" name="email" class="myinput" placeholder="Email"><br>
-          <input type="password" name="password" class="myinput" placeholder="Enter password"><br>
-          <input type="password" name="confirmpassword" class="myinput" placeholder="Confirm password"><br><br>
-          <input type="checkbox" name=""> Show password<br><br>
+          <input type="password" name="password" class="myinput" placeholder="Enter password" id="password2"><br>
+          <input type="password" name="confirmpassword" class="myinput" placeholder="Confirm password" id="password3"><br><br>
+          <input type="checkbox" name="" onclick="showpassword2();" > Show password<br><br>
           <input type="submit" name="createaccount" class="loginbutton" value="Create account"><br></center><br><br>
       </form>
           <button class="createaccountbutton" id="calllogin">Log in instead</button><br><br>
@@ -111,6 +163,28 @@
 
 
 <script type="text/javascript" src="javascript/index.js">
+</script>
+<script type="text/javascript">
+    function showpassword() {
+  var x = document.getElementById("password1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+   function showpassword2() {
+  var pass = document.getElementById("password2");
+  var pass2 = document.getElementById("password3");
+  if (pass.type === "password") {
+    pass.type = "text";
+    pass2.type = "text";
+  } else {
+    pass.type = "password";
+    pass2.type = "password";
+  }
+}
+
 </script>
 </body>
 </html>

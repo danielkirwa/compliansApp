@@ -1,7 +1,22 @@
 <?php 
-   
+   require_once('connection.php');
 
  ?>
+ <?php
+//initialize the session
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+if ($_SESSION['username']) {
+  // code...
+ $currentUser =  $_SESSION['username'];
+
+}else{
+    header("Location:index.php");
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -21,8 +36,8 @@
           <center><h3>Kenya literature bureau</h3></center>
      	 </div>
      	<div class="navbar">
-           <a href="#">username</a> &nbsp; &nbsp;
-           <a href="#">Logout</a>&nbsp; &nbsp;
+           <a href="#"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
+           <a href="logout.php">Logout</a>&nbsp; &nbsp;
      	</div>
       </div>
 </div>
