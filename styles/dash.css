@@ -1,0 +1,13 @@
+.mytextarea{
+	width: 100%;
+
+}
+.mybutton{
+	width: 90%;
+	padding: 4px 6px;
+	background: dodgerblue;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	font-size: 22px;
+}

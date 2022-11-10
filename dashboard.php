@@ -25,6 +25,7 @@ if ($_SESSION['username']) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/dash.css">
 	<title>Dashboard</title>
 </head>
 <body>
@@ -44,7 +45,23 @@ if ($_SESSION['username']) {
 <hr>
 <!-- end of header -->
 <!-- start of body -->
-
+     <div class="center-card">
+         <center><h3><label style="color: dodgerblue;">Kindly submit your complaints</label></h3>
+         <br> </center>
+         <center>
+         <select class="myinput">
+             <option>Option one</option>
+             <option>Option two</option>
+         </select></center><br>
+         <textarea placeholder="Enter your complaint here" class="mytextarea" rows="10">
+             
+         </textarea><br>
+         <br><center>
+          <input type="submit" name="" value="Post Complaint" class="mybutton">
+           </center>
+         
+     </div>
+     <br>
 <!-- end of body -->
 <div class="footer">
     <center>
