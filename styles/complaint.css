@@ -1,0 +1,79 @@
+.complaint-form-holder{
+	width: 70%;
+	 border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+  background: #fff;
+  margin-left: 15%;
+}
+.complaint-guide{
+ background: dodgerblue;
+ font-size: 22px;
+ font-weight: bold;
+ color: #000000;
+ padding: 8px;
+}
+.complaint-form{
+	border: 2px solid dodgerblue;
+}
+.myselect{
+  width: 70%;
+  padding: 8px 6px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: dodgerblue;
+  font-size: 18px;
+}
+.mybutton{
+	width: 70%;
+  padding: 8px 6px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: mediumseagreen;
+  font-size: 18px;
+  cursor: pointer;
+}
+.mytextarea{
+	width: 70%;
+
+}
+.password-changer{
+	width: 270px;
+	flex: 1 1 270px; /*  Stretching: */
+    flex: 0 1 270px; /*  No stretching: */
+    margin: 5px;
+    border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+  background: #fff;
+}
+
+.mypasswordinput{
+	padding: 6px 8px;
+	width: 90%;
+	border-radius: 5px;
+	margin-top: 8px;
+	border: none;
+	border: 1px solid dodgerblue;
+}
+.myinputview{
+  width: 70%;
+  padding: 6px 8px;
+}
+
+@media (max-width: 800px){
+.myselect{
+  width: 90%;
+ 
+}
+.mybutton{
+	width: 90%;
+
+}
+.mytextarea{
+	width: 90%;
+
+}
+}

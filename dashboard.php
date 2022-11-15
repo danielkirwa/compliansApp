@@ -37,7 +37,9 @@ if ($_SESSION['username']) {
           <center><h3>Kenya literature bureau</h3></center>
      	 </div>
      	<div class="navbar">
-           <a href="#"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
+            <a href="#" class="active">Dashboard</a>&nbsp; &nbsp;
+            <a href="complaint.php">Complaint</a>&nbsp; &nbsp;
+           <a href="profile.php"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
            <a href="logout.php">Logout</a>&nbsp; &nbsp;
      	</div>
       </div>

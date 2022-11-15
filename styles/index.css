@@ -22,6 +22,10 @@
   	 transition: 1s ease;
 
 }
+.active{
+		background: dodgerblue;
+  	color: white;
+}
 .navbar a:hover {
   	background: dodgerblue;
   	color: white;
