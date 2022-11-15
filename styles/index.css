@@ -96,8 +96,11 @@
 	padding-top: 16px;
 	padding-bottom: 16px;
 	bottom: 0;
+	position: fixed;
 	align-items: center;
 	align-content: center;
+	margin-bottom: 0px;
+	width: 99%;
 }
 #registrationform{
  display: none;
