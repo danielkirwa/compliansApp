@@ -11,3 +11,21 @@
 	border-radius: 10px;
 	font-size: 22px;
 }
+
+.dash-infor{
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.infor-card{
+      flex: 1 1 300px; /*  Stretching: */
+    flex: 0 1 300px; /*  No stretching: */
+    margin: 5px;
+    border: 1px solid #fff;
+  box-shadow: 0 0 0.5rem 0 rgba(0 ,0,0,0.3);
+  padding: 8px;
+  background: #fff;
+
+}

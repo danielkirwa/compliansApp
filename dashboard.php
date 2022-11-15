@@ -44,24 +44,16 @@ if ($_SESSION['username']) {
 </div>
 <hr>
 <!-- end of header -->
+
 <!-- start of body -->
-     <div class="center-card">
-         <center><h3><label style="color: dodgerblue;">Kindly submit your complaints</label></h3>
-         <br> </center>
-         <center>
-         <select class="myinput">
-             <option>Option one</option>
-             <option>Option two</option>
-         </select></center><br>
-         <textarea placeholder="Enter your complaint here" class="mytextarea" rows="10">
-             
-         </textarea><br>
-         <br><center>
-          <input type="submit" name="" value="Post Complaint" class="mybutton">
-           </center>
-         
-     </div>
-     <br>
+    
+<div class="dash-infor">
+    <div class="infor-card">general </div>
+     <div class="infor-card"> rates</div>
+</div>
+   
+
+
 <!-- end of body -->
 <div class="footer">
     <center>
