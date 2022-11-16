@@ -26,7 +26,7 @@ if ($_SESSION['username']) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
     <link rel="stylesheet" type="text/css" href="styles/dash.css">
-	<title>Dashboard</title>
+	<title>Admin Dashboard</title>
 </head>
 <body>
  <!-- start of header -->
@@ -39,6 +39,8 @@ if ($_SESSION['username']) {
      	<div class="navbar">
             <a href="#" class="active">Dashboard</a>&nbsp; &nbsp;
             <a href="complaint.php">Complaint</a>&nbsp; &nbsp;
+            <a href="complaint.php">Category</a>&nbsp; &nbsp;
+            <a href="complaint.php">Users</a>&nbsp; &nbsp;
            <a href="profile.php"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
            <a href="logout.php">Logout</a>&nbsp; &nbsp;
      	</div>
@@ -69,29 +71,29 @@ if ($_SESSION['username']) {
 <!-- your complaints -->
 
 <div>
-    <center>    <h1>Your submission</h1></center>
+    <center>    <h1>Unseen complaints</h1></center>
 
 <table id="" class="complaint-table">
   <tr>
     <th>Serial</th>
     <th>Category</th>
     <th>Date</th>
-    <th>Status</th>
+    <th>Complaint</th>
     <th>Action</th>
   </tr>
   <tr>
     <td>1</td>
     <td>category</td>
     <td>1/12/2022</td>
-    <td>Recieved</td>
-    <td><button class="view-btn"> <a href="viewcomplaint.php">View</a> </button> </td>
+    <td>Complaint body here</td>
+    <td><button class="view-btn"> <a href="viewcomplaint.php">Open</a> </button> </td>
   </tr>
   <tr>
      <td>2</td>
     <td>category</td>
     <td>1/22/2022</td>
-    <td>Recieved</td>
-    <td><button class="view-btn"> <a href="viewcomplaint.php">View</a> </button> </td>
+    <td>Complaint body here</td>
+    <td><button class="view-btn"> <a href="viewcomplaint.php">Open</a> </button> </td>
   </tr>
   
  

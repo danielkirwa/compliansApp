@@ -24,9 +24,9 @@ if ($_SESSION['username']) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
+	<link rel="stylesheet" type="text/css" href="klbcomplains/styles/index.css">
     <link rel="stylesheet" type="text/css" href="styles/dash.css">
-	<title>Dashboard</title>
+	<title>Admin Dashboard</title>
 </head>
 <body>
  <!-- start of header -->
@@ -39,6 +39,8 @@ if ($_SESSION['username']) {
      	<div class="navbar">
             <a href="#" class="active">Dashboard</a>&nbsp; &nbsp;
             <a href="complaint.php">Complaint</a>&nbsp; &nbsp;
+            <a href="complaint.php">Category</a>&nbsp; &nbsp;
+            <a href="complaint.php">Users</a>&nbsp; &nbsp;
            <a href="profile.php"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
            <a href="logout.php">Logout</a>&nbsp; &nbsp;
      	</div>

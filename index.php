@@ -76,7 +76,7 @@
                }
 
                if($_SESSION['privillage'] == "Admin"){
-                //header("Location:dashboardadmin.php");
+                header("Location:dashboardadmin.php");
 
                }
                if($_SESSION['privillage'] == "none"){
