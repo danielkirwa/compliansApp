@@ -38,9 +38,9 @@ if ($_SESSION['username']) {
      	 </div>
      	<div class="navbar">
             <a href="#" class="active">Dashboard</a>&nbsp; &nbsp;
-            <a href="complaint.php">Complaint</a>&nbsp; &nbsp;
-            <a href="complaint.php">Category</a>&nbsp; &nbsp;
-            <a href="complaint.php">Users</a>&nbsp; &nbsp;
+            <a href="adminviewcomplaint.php">Complaint</a>&nbsp; &nbsp;
+            <a href="addcategory.php">Category</a>&nbsp; &nbsp;
+            <a href="allusers.php">Users</a>&nbsp; &nbsp;
            <a href="profile.php"><?php echo $currentUser; ?></a> &nbsp; &nbsp;
            <a href="logout.php">Logout</a>&nbsp; &nbsp;
      	</div>
@@ -54,8 +54,25 @@ if ($_SESSION['username']) {
 <div class="dash-infor">
     <div class="infor-card">
         <div class="lb-div" style="background: dodgerblue;">All complains</div><br>
-        <div class="lb-div" style="background: tomato;">Pending</div><br>
-        <div class="lb-div" style="background:  mediumseagreen;">Closed</div>
+        <center>
+        <label>number here</label><br><br>
+            <button style="background:dodgerblue;" class="mybutton"><a href="complainttable.php">View pendding</a> </button>
+        </center>
+     </div>
+      <div class="infor-card">
+        <div class="lb-div" style="background: orange;">Pendding</div><br>
+        <center>
+            <label>number here</label><br><br>
+            <button style="background:orange;" class="mybutton"><a href="complainttable.php">View pendding</a> </button>
+        </center>
+        
+     </div>
+      <div class="infor-card">
+        <div class="lb-div" style="background: mediumseagreen;">Solved</div><br>
+        <center>
+        <label>number here</label><br><br>
+            <button style="background:mediumseagreen;" class="mybutton"><a href="complainttable.php" >View pendding</a> </button>
+        </center>
      </div>
      <div class="infor-card"> 
         <center>
@@ -86,14 +103,14 @@ if ($_SESSION['username']) {
     <td>category</td>
     <td>1/12/2022</td>
     <td>Complaint body here</td>
-    <td><button class="view-btn"> <a href="viewcomplaint.php">Open</a> </button> </td>
+    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
   </tr>
   <tr>
      <td>2</td>
     <td>category</td>
     <td>1/22/2022</td>
     <td>Complaint body here</td>
-    <td><button class="view-btn"> <a href="viewcomplaint.php">Open</a> </button> </td>
+    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
   </tr>
   
  
