@@ -60,9 +60,7 @@ if ($_SESSION['username']) {
             <option>Option two</option>
         </select>
         <br><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10">
-            
-        </textarea><br><br>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"></textarea><br><br>
         <input type="file" name="" class="myselect"><br><br>
         <input type="submit" name="" value="Submit complant" class="mybutton">
         </center>

@@ -56,14 +56,14 @@ if ($_SESSION['username']) {
         <div class="lb-div" style="background: dodgerblue;">All complains</div><br>
         <center>
         <label>number here</label><br><br>
-            <button style="background:dodgerblue;" class="mybutton"><a href="complainttable.php">View pendding</a> </button>
+            <button style="background:dodgerblue;" class="mybutton"><a href="complainttable.php">View Pending</a> </button>
         </center>
      </div>
       <div class="infor-card">
-        <div class="lb-div" style="background: orange;">Pendding</div><br>
+        <div class="lb-div" style="background: orange;">Pending</div><br>
         <center>
             <label>number here</label><br><br>
-            <button style="background:orange;" class="mybutton"><a href="complainttable.php">View pendding</a> </button>
+            <button style="background:orange;" class="mybutton"><a href="complainttable.php">View Pending</a> </button>
         </center>
         
      </div>
@@ -71,7 +71,7 @@ if ($_SESSION['username']) {
         <div class="lb-div" style="background: mediumseagreen;">Solved</div><br>
         <center>
         <label>number here</label><br><br>
-            <button style="background:mediumseagreen;" class="mybutton"><a href="complainttable.php" >View pendding</a> </button>
+            <button style="background:mediumseagreen;" class="mybutton"><a href="complainttable.php" >View Pending</a> </button>
         </center>
      </div>
      <div class="infor-card"> 

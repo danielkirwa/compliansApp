@@ -57,8 +57,7 @@ if ($_SESSION['username']) {
          <input type="text" name="" value="complaint category" class="myinputview">
         <br><br>
         <label>Complaint  :</label><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"> Your complaint 
-        </textarea><br><br>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"></textarea><br><br>
         <label>Date submited :</label><br>
          <input type="text" name="" value="12/22/2022" class="myinputview">
          <br><br>
@@ -71,8 +70,7 @@ if ($_SESSION['username']) {
 
          <br><br>
         <label>Respond to complaint  :</label><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"> Complaint respond 
-        </textarea>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"></textarea>
         <br><br>
         <input type="submit" name="" value="Update Complaint" class="mybutton">
         </center>
