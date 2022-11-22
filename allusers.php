@@ -26,7 +26,7 @@ if ($_SESSION['username']) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
     <link rel="stylesheet" type="text/css" href="styles/dash.css">
-    <title>Complaint</title>
+    <title>All users</title>
 </head>
 <body>
  <!-- start of header -->
