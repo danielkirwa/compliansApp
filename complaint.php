@@ -16,7 +16,42 @@ if ($_SESSION['username']) {
     header("Location:index.php");
 }
 
+  // select categories
+        $allcategories = "SELECT ID, CATEGORY FROM tblcategory WHERE STATUS = 1";
+$categoryresult = mysqli_query($conn, $allcategories);
+
 ?>
+<?php 
+
+if(isset($_POST['submitcomplaint'])){
+            if($_POST['complainttext'] != "" ){
+
+            $CATEGORY = $_POST['Categoryslected'];
+            $COMPLAINTTEXT = $_POST['complainttext'];
+            //$COMPLAINTEVIDENCE = $_POST['categorydetails'];
+           
+            
+             
+    $sql = "INSERT INTO tblcomplains (CATEGORYID,ID, COMPLAIN, STATUS)
+    VALUES ('{$CATEGORY}','{$currentUser}', '{$COMPLAINTTEXT}', 1)";
+
+    if ($conn->query($sql) === TRUE) {
+         echo "<script>alert('Success, Submitted your complaint');</script>";
+
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+            
+                }else{
+           echo "<script>alert('Complaint must be filled');</script>";
+        }
+ 
+           
+
+        }
+
+ ?>
 
 
 <!DOCTYPE html>
@@ -54,17 +89,34 @@ if ($_SESSION['username']) {
         <p>Kindly fill in the details of the complaint accodingly you can also uplaod related documents in the following format(.png, .jpg, .jpeg, .pdf, .doxc, .txt).</p>
     </div>
     <div class="complaint-form">
+        <form action="complaint.php" method="POST">
         <br><center>
-        <select class="myselect">
-            <option>Option one</option>
-            <option>Option two</option>
-        </select>
+        
+        <select class="myselect" name="Categoryslected">    
+        <?php if(mysqli_num_rows($categoryresult) < 0) {
+    } else {
+    while ($row = mysqli_fetch_assoc($categoryresult)){ ?>
+    
+      <option value="<?php echo $row['ID']?>"<?php if (!(strcmp($row['ID'], $row['ID']))) {echo "selected=\"selected\"";} ?>><?php echo $row['CATEGORY']?></option>
+  
+      }
+     ?>
+   
+      
+      
+    
+    <?php } ;
+    
+  } ?>
+</select>
+    
         <br><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"></textarea><br><br>
-        <input type="file" name="" class="myselect"><br><br>
-        <input type="submit" name="" value="Submit complant" class="mybutton">
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10" name="complainttext"></textarea><br><br>
+        <input type="file" name="complaintevidence" class="myselect"><br><br>
+        <input type="submit" name="submitcomplaint" value="Submit complant" class="mybutton">
         </center>
         <br>
+    </form>
     </div>
 
 </div>
@@ -84,3 +136,5 @@ if ($_SESSION['username']) {
 </script>
 </body>
 </html>
+
+

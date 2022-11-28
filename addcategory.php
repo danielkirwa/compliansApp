@@ -142,9 +142,10 @@ $categoryresult = mysqli_query($conn, $allcategories);
 
          <?php   
           if($row["STATUS"] == 1){
-        echo "<button class=\"sub-btn-open\"> <a href=\"#\"><i class=\"fa fa-plus\"></i> &nbsp;Open</a> </button> ";
+            echo "<button class=\"sub-btn-close\"> <a href=\"#\"><i class=\"fa fa-close\"></i> &nbsp;Close</a> </button> ";
+        
       }else{
-        echo "<button class=\"sub-btn-close\"> <a href=\"#\"><i class=\"fa fa-close\"></i> &nbsp;Close</a> </button> ";
+        echo "<button class=\"sub-btn-open\"> <a href=\"#\"><i class=\"fa fa-plus\"></i> &nbsp;Open</a> </button> ";
       }
      ?>
     </td>

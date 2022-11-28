@@ -19,6 +19,15 @@ if ($_SESSION['username']) {
 ?>
 
 
+<?php 
+ // select categories
+$sql = "SELECT * FROM tblcomplains";
+$result = $conn->query($sql);
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,20 +107,34 @@ if ($_SESSION['username']) {
     <th>Complaint</th>
     <th>Action</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>category</td>
-    <td>1/12/2022</td>
-    <td>Complaint body here</td>
-    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
-  </tr>
-  <tr>
-     <td>2</td>
-    <td>category</td>
-    <td>1/22/2022</td>
-    <td>Complaint body here</td>
-    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
-  </tr>
+  <?php if($result->num_rows > 0) {
+    } else {
+    while($row = $result->fetch_assoc()){ ?>
+    <tr>
+      <td><?php echo $row["COUNTER"];  ?></td>
+      <td><?php echo $row["CATEGORYID"];?></td>
+      <td><?php echo $row["DATEADDED"]; ?></td>
+      <td><?php echo $row["COMPLAIN"]; ?></td>
+
+     <td>
+
+         <?php   
+          if($row["STATUS"] == 1){
+            echo "<button class=\"view-btn\"> <a href=\"adminviewcomplaint.php\">Open</a> </button>";
+        
+      }else{
+        
+      }
+     ?>
+    </td>
+      
+      
+    </tr>
+    <?php } ;
+    
+  } ?>
+
+   
   
  
 </table>
