@@ -97,7 +97,7 @@ if(isset($_POST['submitcomplaint'])){
     } else {
     while ($row = mysqli_fetch_assoc($categoryresult)){ ?>
     
-      <option value="<?php echo $row['ID']?>"<?php if (!(strcmp($row['ID'], $row['ID']))) {echo "selected=\"selected\"";} ?>><?php echo $row['CATEGORY']?></option>
+      <option value="<?php echo $row['CATEGORY']?>"<?php if (!(strcmp($row['ID'], $row['ID']))) {echo "selected=\"selected\"";} ?>><?php echo $row['CATEGORY']?></option>
   
       }
      ?>

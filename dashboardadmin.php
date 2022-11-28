@@ -21,7 +21,7 @@ if ($_SESSION['username']) {
 
 <?php 
  // select categories
-$sql = "SELECT * FROM tblcomplains";
+$sql = "SELECT * FROM tblcomplains WHERE STATUS = 1 ";
 $result = $conn->query($sql);
 
 
@@ -107,34 +107,30 @@ $result = $conn->query($sql);
     <th>Complaint</th>
     <th>Action</th>
   </tr>
-  <?php if($result->num_rows > 0) {
-    } else {
-    while($row = $result->fetch_assoc()){ ?>
+  <?php 
+  if ($result->num_rows > 0) {
+// output data of each row
+  while($row = $result->fetch_assoc()) {?>
+
     <tr>
       <td><?php echo $row["COUNTER"];  ?></td>
       <td><?php echo $row["CATEGORYID"];?></td>
       <td><?php echo $row["DATEADDED"]; ?></td>
       <td><?php echo $row["COMPLAIN"]; ?></td>
+      
 
      <td>
-
-         <?php   
-          if($row["STATUS"] == 1){
-            echo "<button class=\"view-btn\"> <a href=\"adminviewcomplaint.php\">Open</a> </button>";
-        
-      }else{
-        
-      }
-     ?>
+<form action="dashboard.php" method="POST"> <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php">Open</a> </button>
+      </form>
     </td>
-      
-      
-    </tr>
-    <?php } ;
     
-  } ?>
-
-   
+    </tr>
+    <?php
+}
+} else {
+  echo "NO COMPLAINTS AVAILABLE";
+}
+  ?>
   
  
 </table>
