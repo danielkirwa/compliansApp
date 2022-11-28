@@ -17,6 +17,10 @@ if ($_SESSION['username']) {
 }
 
 ?>
+ <?php 
+$complaintid = $_GET['editcomplaintid'];
+echo $complaintid;
+ ?>
 
 
 <!DOCTYPE html>

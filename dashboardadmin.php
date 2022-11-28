@@ -28,6 +28,8 @@ $result = $conn->query($sql);
  ?>
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,8 +122,9 @@ $result = $conn->query($sql);
       
 
      <td>
-<form action="dashboard.php" method="POST"> <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php">Open</a> </button>
-      </form>
+ <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"];
+                     ?>">Open</a> </button>
+      
     </td>
     
     </tr>
