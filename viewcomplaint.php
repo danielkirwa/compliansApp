@@ -18,6 +18,24 @@ if ($_SESSION['username']) {
 
 ?>
 
+ <?php 
+$complaintid = $_GET['editcomplaintid'];
+
+// select specific complaint
+
+$sql = "SELECT * FROM tblcomplains WHERE COUNTER = '{$complaintid}'  ";
+$result = $conn->query($sql);
+
+
+
+  $row = $result->fetch_assoc();
+
+
+
+
+ ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -54,16 +72,23 @@ if ($_SESSION['username']) {
     <div class="complaint-form">
         <br><center>
             <label>Complaint category :</label><br>
-         <input type="text" name="" value="complaint category" class="myinputview">
+         <input type="text" name="" value="<?php echo $row["CATEGORYID"];  ?>" class="myinputview">
         <br><br>
         <label>Complaint  :</label><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"> Your complaint 
-        </textarea><br><br>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"><?php echo $row["COMPLAIN"];  ?></textarea><br><br>
         <label>Date submited :</label><br>
-         <input type="text" name="" value="12/22/2022" class="myinputview">
+         <input type="text" name="" value="<?php echo $row["DATEADDED"];  ?>" class="myinputview">
          <br><br>
         <label>Status :</label><br>
-         <input type="text" name="" value="Pending" class="myinputview">
+         <input type="text" name="" value="<?php if ($row["STATUS"] == 1){
+                echo "UNSEEN";
+
+             }else if($row["STATUS"] == 2){
+                echo "PENDING";
+             }else{
+                echo "CLOSED";
+             }
+               ?>" class="myinputview">
          <br><br>
         <label>Date Viewed :</label><br>
          <input type="text" name="" value="12/22/2022" class="myinputview">

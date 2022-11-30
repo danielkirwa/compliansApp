@@ -18,6 +18,14 @@ if ($_SESSION['username']) {
 
 ?>
 
+<?php 
+ // select categories 
+$sql = "SELECT * FROM tblcomplains   ORDER BY COUNTER DESC";
+$result = $conn->query($sql);
+
+
+ ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -54,28 +62,41 @@ if ($_SESSION['username']) {
     <th>Category</th>
     <th>Complaint</th>
     <th>Date Submited</th>
-    <th>Admin Date</th>
     <th>Status</th>
     <th>Action</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>category</td>
-    <td>Complaint body here</td>
-    <td>1/12/2022</td>
-    <td>1/12/2022</td>
-    <td>Status</td>
-    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
-  </tr>
-  <tr>
-     <td>2</td>
-    <td>category</td>
-    <td>Complaint body here</td>
-    <td>1/12/2022</td>
-    <td>1/12/2022</td>
-    <td>Status</td>
-    <td><button class="view-btn"> <a href="adminviewcomplaint.php">Open</a> </button> </td>
-  </tr>
+  <?php 
+  if ($result->num_rows > 0) {
+// output data of each row
+  while($row = $result->fetch_assoc()) {?>
+
+    <tr>
+      <td><?php echo $row["COUNTER"];  ?></td>
+      <td><?php echo $row["CATEGORYID"];?></td>
+      <td><?php echo $row["COMPLAIN"]; ?></td>
+      <td><?php echo $row["DATEADDED"]; ?></td>
+      <td><?php if($row["STATUS"] == 1){
+       echo "<label style= \"background : tomato;   padding: 8px 8px;\"> UNSEEN </label>";
+      }else if($row["STATUS"] == 2){
+         echo "<label style=\"background : orange; padding: 8px 8px;\"> PENDING </label>";
+      }else{
+         echo "<label style=\"background : mediumseagreen; padding: 8px 8px;\"> CLOSED </label>";
+      } ?></td>
+
+     <td>
+ <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"];
+                     ?>">Open</a> </button>
+      
+    </td>
+    
+    </tr>
+    <?php
+}
+} else {
+  echo "NO COMPLAINTS AVAILABLE";
+}
+  ?>
+  
   
  
 </table>

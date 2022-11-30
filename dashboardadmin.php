@@ -20,8 +20,8 @@ if ($_SESSION['username']) {
 
 
 <?php 
- // select categories
-$sql = "SELECT * FROM tblcomplains WHERE STATUS = 1 ";
+ // select categories 
+$sql = "SELECT * FROM tblcomplains WHERE STATUS = 1  ORDER BY COUNTER DESC";
 $result = $conn->query($sql);
 
 
