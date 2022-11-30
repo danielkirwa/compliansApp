@@ -18,7 +18,12 @@ if ($_SESSION['username']) {
 
 ?>
  <?php 
-$complaintid = $_GET['editcomplaintid'];
+
+
+
+ $complaintid =  $_SESSION['complaintid'];
+
+
 
 // select specific complaint
 
@@ -36,24 +41,25 @@ $result = $conn->query($sql);
 
  <?php 
  // get update time for status change
- $date = date('d-m-y h:i:s',strtotime('+3 hours'));
+ $date = date('d-m-y h:i:s',strtotime('+2 hours'));
 
 
 if(isset($_POST['submitrespond'])){
     $newstatusgiven = $_POST['newstatus'];
-            if($_POST['$newstatusgiven'] == "Useen" ){
+            if($newstatusgiven == "Useen" ){
 
            
   echo "<script>alert('Status not changed select new status');</script>";
             
-                }else if($_POST['$newstatusgiven'] == "Pending" ){
+                }else if($newstatusgiven == "Pending" ){
            
              
-             $sqlupdatepending = "UPDATE tblcomplains SET STATUS= 2 , DATEVIEWD = '{$date}' WHERE ID = '{$currentUser}' ";
+             $sqlupdatepending = "UPDATE tblcomplains SET STATUS = 2 , DATEVIEWED = '{$date}' WHERE COUNTER = '{$complaintid}' ";
 
            if ($conn->query($sqlupdatepending) === TRUE) {
            echo "Record updated successfully";
         echo "<script>alert('Successfully updated to Pending');</script>";
+        unset($_SESSION['complaintid']);
            } else {
            echo "Error updating new status: " . $conn->error;
            }           
@@ -62,20 +68,25 @@ if(isset($_POST['submitrespond'])){
             
              
    
-        }else if($_POST['$newstatusgiven'] == "Closed" ){
+        }else if($newstatusgiven == "Closed" ){
             $NEWRESPOND = $_POST['adminrespond'];
 
-             
-             $sqlupdatepending = "UPDATE tblcomplains SET STATUS= 0 , DATEVIEWD = '{$date}', DATECONCLUDED = '{$date}' WHERE ID = '{$NEWRESPOND}' ";
+             if($NEWRESPOND != ""){
+             $sqlupdatepending = "UPDATE tblcomplains SET STATUS= 0 , DATEVIEWED = '{$date}', DATECONCLUDED = '{$date}', CONCLUSION = '{$NEWRESPOND}' WHERE COUNTER = '{$complaintid}' ";
 
            if ($conn->query($sqlupdatepending) === TRUE) {
            echo "Record updated successfully";
-        echo "<script>alert('Successfully updated to Pending');</script>";
+        echo "<script>alert('Successfully updated to Closed');</script>";
+        unset($_SESSION['complaintid']);
            } else {
            echo "Error updating new status: " . $conn->error;
            }           
 
            $conn->close();
+       }else{
+        echo "<script>alert('Fill in your respond to close the complaint');</script>";
+
+       }
 
         }else{
 

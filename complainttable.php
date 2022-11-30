@@ -84,7 +84,8 @@ $result = $conn->query($sql);
       } ?></td>
 
      <td>
- <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"];
+ <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"]; 
+ $_SESSION['complaintid'] = $row["COUNTER"];
                      ?>">Open</a> </button>
       
     </td>
