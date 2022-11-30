@@ -34,6 +34,60 @@ $result = $conn->query($sql);
 
  ?>
 
+ <?php 
+ // get update time for status change
+ $date = date('d-m-y h:i:s',strtotime('+3 hours'));
+
+
+if(isset($_POST['submitrespond'])){
+    $newstatusgiven = $_POST['newstatus'];
+            if($_POST['$newstatusgiven'] == "Useen" ){
+
+           
+  echo "<script>alert('Status not changed select new status');</script>";
+            
+                }else if($_POST['$newstatusgiven'] == "Pending" ){
+           
+             
+             $sqlupdatepending = "UPDATE tblcomplains SET STATUS= 2 , DATEVIEWD = '{$date}' WHERE ID = '{$currentUser}' ";
+
+           if ($conn->query($sqlupdatepending) === TRUE) {
+           echo "Record updated successfully";
+        echo "<script>alert('Successfully updated to Pending');</script>";
+           } else {
+           echo "Error updating new status: " . $conn->error;
+           }           
+
+           $conn->close();
+            
+             
+   
+        }else if($_POST['$newstatusgiven'] == "Closed" ){
+            $NEWRESPOND = $_POST['adminrespond'];
+
+             
+             $sqlupdatepending = "UPDATE tblcomplains SET STATUS= 0 , DATEVIEWD = '{$date}', DATECONCLUDED = '{$date}' WHERE ID = '{$NEWRESPOND}' ";
+
+           if ($conn->query($sqlupdatepending) === TRUE) {
+           echo "Record updated successfully";
+        echo "<script>alert('Successfully updated to Pending');</script>";
+           } else {
+           echo "Error updating new status: " . $conn->error;
+           }           
+
+           $conn->close();
+
+        }else{
+
+         echo "<script>alert('Status not changed select new status');</script>";
+
+        }
+ 
+           
+
+        }
+  ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -69,6 +123,7 @@ $result = $conn->query($sql);
     </div>
     <div class="complaint-form">
         <br><center>
+            <form action="adminviewcomplaint.php" method="POST">
             <label>Complaint category :</label><br>
          <input type="text" name="" value="<?php echo $row["CATEGORYID"];  ?>" class="myinputview">
         <br><br>
@@ -88,20 +143,21 @@ $result = $conn->query($sql);
              }
                ?>" class="myinputview"><br><br>
         <label>Change status :</label><br>
-         <select class="myinputview">
+         <select class="myinputview" name="newstatus">
             <option>Change status</option>
-             <option>Unseen</option>
-             <option>Pendding</option>
+             <option>Seen</option>
+             <option>Pending</option>
              <option>Closed</option>
          </select>
 
          <br><br>
         <label>Respond to complaint  :</label><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"></textarea>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10" name="adminrespond"></textarea>
         <br><br>
-        <input type="submit" name="" value="Update Complaint" class="mybutton">
+        <input type="submit" name="submitrespond" value="Update Complaint" class="mybutton">
         </center>
         <br>
+        </form>
     </div>
 
 </div>

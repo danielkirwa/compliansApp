@@ -83,6 +83,7 @@ $result = $conn->query($sql);
   <tr>
     <th>Serial</th>
     <th>Category</th>
+    <th>Complaint</th>
     <th>Date</th>
     <th>Status</th>
     <th>Action</th>

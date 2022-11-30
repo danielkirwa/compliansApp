@@ -91,14 +91,13 @@ $result = $conn->query($sql);
                ?>" class="myinputview">
          <br><br>
         <label>Date Viewed :</label><br>
-         <input type="text" name="" value="12/22/2022" class="myinputview">
+         <input type="text" name="" value="<?php echo $row["DATEVIEWED"];  ?>" class="myinputview">
          <br><br>
         <label>Respond  :</label><br>
-        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"> Complaint respond 
-        </textarea>
+        <textarea placeholder="Type your complaint here" class="mytextarea" rows="10"><?php echo $row["CONCLUSION"];  ?></textarea>
         <br><br>
         <label>Date Closed :</label><br>
-         <input type="text" name="" value="12/22/2022" class="myinputview">
+         <input type="text" name="" value="<?php echo $row["DATECONCLUDED"];  ?>2" class="myinputview">
         <br><br>
         <div class="rate-bar">
             <label>Rate us</label>
