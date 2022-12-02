@@ -27,6 +27,66 @@ $result = $conn->query($sql);
 
  ?>
 
+ <?php 
+ // get counts
+  $rowcount;
+  $rowpending;
+  $rowclosed;
+  $rowuseen;
+ //all complaints
+  $sqlallcomplaimt = "SELECT * from tblcomplains";
+
+   if ($resultall = mysqli_query($conn, $sqlallcomplaimt)) {
+
+   // Return the number of rows in result set
+   $rowcount = mysqli_num_rows( $resultall );
+   
+}else{
+   $rowcount = 0;
+}
+//unseen all complaints
+  $sqluseencomplaint = "SELECT * from tblcomplains WHERE STATUS = 1";
+
+   if ($resultuseen = mysqli_query($conn, $sqluseencomplaint)) {
+
+   // Return the number of rows in result set
+   $rowuseen = mysqli_num_rows( $resultuseen );
+   
+}else{
+   $rowuseen = 0;
+}
+
+//unseen all pending
+  $sqlpendingcomplaint = "SELECT * from tblcomplains WHERE STATUS = 2";
+
+   if ($resultpending = mysqli_query($conn, $sqlpendingcomplaint)) {
+
+   // Return the number of rows in result set
+   $rowpending = mysqli_num_rows( $resultpending );
+   
+}else{
+   $rowpending = 0;
+}
+
+
+
+//all closed
+  $sqlclosedcomplaint = "SELECT * from tblcomplains WHERE STATUS = 0";
+
+   if ($resultclosed = mysqli_query($conn, $sqlclosedcomplaint)) {
+
+   // Return the number of rows in result set
+   $rowclosed = mysqli_num_rows( $resultclosed );
+   
+}else{
+   $rowclosed = 0;
+}
+
+
+
+
+  ?>
+
 
 
 
@@ -66,14 +126,14 @@ $result = $conn->query($sql);
     <div class="infor-card">
         <div class="lb-div" style="background: dodgerblue;">All complains</div><br>
         <center>
-        <label>number here</label><br><br>
+        <b><label><?php echo $rowcount ?></label></b><br><br>
             <button style="background:dodgerblue;" class="mybutton"><a href="complainttable.php">View Pending</a> </button>
         </center>
      </div>
       <div class="infor-card">
         <div class="lb-div" style="background: orange;">Pending</div><br>
         <center>
-            <label>number here</label><br><br>
+            <b><label><?php echo $rowpending; ?></label></b><br><br>
             <button style="background:orange;" class="mybutton"><a href="complainttable.php">View Pending</a> </button>
         </center>
         
@@ -81,7 +141,7 @@ $result = $conn->query($sql);
       <div class="infor-card">
         <div class="lb-div" style="background: mediumseagreen;">Solved</div><br>
         <center>
-        <label>number here</label><br><br>
+        <b><label><?php echo $rowclosed; ?></label></b><br><br>
             <button style="background:mediumseagreen;" class="mybutton"><a href="complainttable.php" >View Pending</a> </button>
         </center>
      </div>
@@ -89,7 +149,11 @@ $result = $conn->query($sql);
         <center>
          <div class="rate-holder">
             <br>
-             0.0%
+              <?php 
+
+                 echo $rowclosed/($rowpending  + $rowclosed);
+                 echo "%";
+               ?>
          </div>
          </center>
          <center><label style="color: mediumseagreen; font-weight:bold; font-size: 18px;">Our solve rate</label> </center>
@@ -99,7 +163,7 @@ $result = $conn->query($sql);
 <!-- your complaints -->
 
 <div>
-    <center>    <h1>Unseen complaints</h1></center>
+    <center>    <h1> <?php echo $rowuseen; ?> &nbsp;Unseen complaints</h1></center>
 
 <table id="" class="complaint-table">
   <tr>

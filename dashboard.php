@@ -26,6 +26,34 @@ $result = $conn->query($sql);
 
  ?>
 
+<?php 
+
+ $sqlpendingcomplaint = "SELECT * from tblcomplains WHERE STATUS = 2";
+
+   if ($resultpending = mysqli_query($conn, $sqlpendingcomplaint)) {
+
+   // Return the number of rows in result set
+   $rowpending = mysqli_num_rows( $resultpending );
+   
+}else{
+   $rowpending = 0;
+}
+
+
+
+//all closed
+  $sqlclosedcomplaint = "SELECT * from tblcomplains WHERE STATUS = 0";
+
+   if ($resultclosed = mysqli_query($conn, $sqlclosedcomplaint)) {
+
+   // Return the number of rows in result set
+   $rowclosed = mysqli_num_rows( $resultclosed );
+   
+}else{
+   $rowclosed = 0;
+}
+
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +95,11 @@ $result = $conn->query($sql);
         <center>
          <div class="rate-holder">
             <br>
-             0.0%
+             <?php 
+
+                 echo $rowclosed/($rowpending  + $rowclosed);
+                 echo "%";
+               ?>
          </div>
          </center>
          <center><label style="color: mediumseagreen; font-weight:bold; font-size: 18px;">Our solve rate</label> </center>
