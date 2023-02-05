@@ -17,6 +17,17 @@ if ($_SESSION['username']) {
 }
 
 ?>
+<?php 
+
+<?php 
+ $admins = "Admin"
+ // select categories 
+$alladmins = "SELECT * FROM tblusers WHERE PRIVILLAGE = '{$admins}'   ORDER BY COUNTER DESC";
+$result = $conn->query($alladmins);
+
+
+ ?>
+ ?>
 
 
 <!DOCTYPE html>

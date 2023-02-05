@@ -85,7 +85,9 @@ $result = $conn->query($sql);
 
      <td>
  <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"]; 
- $_SESSION['complaintid'] = $row["COUNTER"];
+ $rowselected = $row["COUNTER"];
+   $_SESSION['selectedcomplaint'] = $rowselected;
+ 
                      ?>">Open</a> </button>
       
     </td>
@@ -114,7 +116,9 @@ $result = $conn->query($sql);
 </div>
 
 
-
+<script type="text/javascript">
+var selectedid = "<?php echo  $rowselected ?>";
+localhost.setItem("idtoupdate",selectedid);
 </script>
 </body>
 </html>

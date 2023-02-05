@@ -187,6 +187,9 @@ $result = $conn->query($sql);
 
      <td>
  <button class="view-btn" value="<?php echo $row["COUNTER"]; ?>" name=""><a href="adminviewcomplaint.php? editcomplaintid=<?php echo $row["COUNTER"];
+
+   $_SESSION['selectedcomplaint'] = $row["COUNTER"];
+
                      ?>">Open</a> </button>
       
     </td>

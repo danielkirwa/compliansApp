@@ -21,8 +21,9 @@ if ($_SESSION['username']) {
 
 
 
- $complaintid =  $_SESSION['complaintid'];
-
+ $complaintid =  $_GET['editcomplaintid'];
+ $x =  $_SESSION['selectedcomplaint'];
+ echo $x;
 
 
 // select specific complaint
@@ -59,9 +60,14 @@ if(isset($_POST['submitrespond'])){
            if ($conn->query($sqlupdatepending) === TRUE) {
            echo "Record updated successfully";
         echo "<script>alert('Successfully updated to Pending');</script>";
-        unset($_SESSION['complaintid']);
+         //header("Location:complainttable.php");
+        if ($_GET['editcomplaintid'] ==  "Undefined" ) {
+            // code...
+            header("Location:complainttable.php");
+        }
            } else {
            echo "Error updating new status: " . $conn->error;
+          // header("Location:complainttable.php");
            }           
 
            $conn->close();
